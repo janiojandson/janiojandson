@@ -37,7 +37,7 @@ import {
   getRequestTooLargeErrorMessage,
 } from '../services/api/errors.js'
 import type { AnyObject, Progress } from '../Tool.js'
-import { isConnectorTextBlock } from '../types/connectorText.js'
+//import { isConnectorTextBlock } from '../types/connectorText.js'
 import type {
   AssistantMessage,
   AttachmentMessage,
@@ -3001,13 +3001,6 @@ export function handleMessageFromStream(
   switch (message.event.type) {
     case 'content_block_start':
       onStreamingText?.(() => null)
-      if (
-        feature('CONNECTOR_TEXT') &&
-        isConnectorTextBlock(message.event.content_block)
-      ) {
-        onSetStreamMode('responding')
-        return
-      }
       switch (message.event.content_block.type) {
         case 'thinking':
         case 'redacted_thinking':
@@ -5073,9 +5066,6 @@ export function stripSignatureBlocks(messages: Message[]): Message[] {
 
     const filtered = content.filter(block => {
       if (isThinkingBlock(block)) return false
-      if (feature('CONNECTOR_TEXT')) {
-        if (isConnectorTextBlock(block)) return false
-      }
       return true
     })
     if (filtered.length === content.length) return msg

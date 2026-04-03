@@ -1,4 +1,6 @@
-import { BROWSER_TOOLS } from '@ant/claude-for-chrome-mcp'
+// import { BROWSER_TOOLS } from '@ant/claude-for-chrome-mcp' // <-- REMOVIDO
+const BROWSER_TOOLS: { name: string }[] = [] // <-- INJETADO (Mock)
+
 import { chmod, mkdir, readFile, writeFile } from 'fs/promises'
 import { homedir } from 'os'
 import { join } from 'path'

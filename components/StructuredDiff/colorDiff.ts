@@ -1,9 +1,6 @@
-import {
-  ColorDiff,
-  ColorFile,
-  getSyntaxTheme as nativeGetSyntaxTheme,
-  type SyntaxTheme,
-} from 'color-diff-napi'
+// Corrigido por Admin Claude: Bypass de SyntaxError N-API
+const _ColorDiffModule = require('color-diff-napi');
+const ColorDiff = _ColorDiffModule.ColorDiff || _ColorDiffModule.default || _ColorDiffModule;
 import { isEnvDefinedFalsy } from '../../utils/envUtils.js'
 
 export type ColorModuleUnavailableReason = 'env'

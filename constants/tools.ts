@@ -26,7 +26,11 @@ import { TOOL_SEARCH_TOOL_NAME } from '../tools/ToolSearchTool/prompt.js'
 import { SYNTHETIC_OUTPUT_TOOL_NAME } from '../tools/SyntheticOutputTool/SyntheticOutputTool.js'
 import { ENTER_WORKTREE_TOOL_NAME } from '../tools/EnterWorktreeTool/constants.js'
 import { EXIT_WORKTREE_TOOL_NAME } from '../tools/ExitWorktreeTool/constants.js'
-import { WORKFLOW_TOOL_NAME } from '../tools/WorkflowTool/constants.js'
+
+// Cirurgia Admin Claude: Removendo importação fantasma e criando Mock
+// import { WORKFLOW_TOOL_NAME } from '../tools/WorkflowTool/constants.js'
+const WORKFLOW_TOOL_NAME = 'workflow'
+
 import {
   CRON_CREATE_TOOL_NAME,
   CRON_DELETE_TOOL_NAME,
@@ -69,6 +73,7 @@ export const ASYNC_AGENT_ALLOWED_TOOLS = new Set([
   ENTER_WORKTREE_TOOL_NAME,
   EXIT_WORKTREE_TOOL_NAME,
 ])
+
 /**
  * Tools allowed only for in-process teammates (not general async agents).
  * These are injected by inProcessRunner.ts and allowed through filterToolsForAgent
@@ -86,20 +91,6 @@ export const IN_PROCESS_TEAMMATE_ALLOWED_TOOLS = new Set([
     ? [CRON_CREATE_TOOL_NAME, CRON_DELETE_TOOL_NAME, CRON_LIST_TOOL_NAME]
     : []),
 ])
-
-/*
- * BLOCKED FOR ASYNC AGENTS:
- * - AgentTool: Blocked to prevent recursion
- * - TaskOutputTool: Blocked to prevent recursion
- * - ExitPlanModeTool: Plan mode is a main thread abstraction.
- * - TaskStopTool: Requires access to main thread task state.
- * - TungstenTool: Uses singleton virtual terminal abstraction that conflicts between agents.
- *
- * ENABLE LATER (NEED WORK):
- * - MCPTool: TBD
- * - ListMcpResourcesTool: TBD
- * - ReadMcpResourceTool: TBD
- */
 
 /**
  * Tools allowed in coordinator mode - only output and agent management tools for the coordinator

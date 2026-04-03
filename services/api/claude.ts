@@ -37,11 +37,11 @@ import {
   toolMatchesName,
 } from '../../Tool.js'
 import type { AgentDefinition } from '../../tools/AgentTool/loadAgentsDir.js'
-import {
-  type ConnectorTextBlock,
-  type ConnectorTextDelta,
-  isConnectorTextBlock,
-} from '../../types/connectorText.js'
+//import {
+  //type ConnectorTextBlock,
+  //type ConnectorTextDelta,
+  //isConnectorTextBlock,
+//} from '../../types/connectorText.js'
 import type {
   AssistantMessage,
   Message,
@@ -657,8 +657,7 @@ export function assistantMessageToMessageParam(
           ..._,
           ...(i === message.message.content.length - 1 &&
           _.type !== 'thinking' &&
-          _.type !== 'redacted_thinking' &&
-          (feature('CONNECTOR_TEXT') ? !isConnectorTextBlock(_) : true)
+          _.type !== 'redacted_thinking'
             ? enablePromptCaching
               ? { cache_control: getCacheControl({ querySource }) }
               : {}

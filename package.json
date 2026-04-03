@@ -1,0 +1,60 @@
+{
+  "name": "claude-code-main",
+  "version": "1.0.0",
+  "description": "Claude Code’s source code appears to have leaked because an early npm release was shipped with source-map data still attached. A developer inspecting the bundled cli.mjs file noticed --enable-source-maps and then found a huge sourceMappingURL block at the bottom, which suggested the package still contained enough mapping data to reconstruct the original source. Anthropic later removed the source map from newer updates, but by then the earlier package had already been downloaded and inspected, so the code could still be recovered from what was already published.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janiojandson/claude.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/janiojandson/claude/issues"
+  },
+  "homepage": "https://github.com/janiojandson/claude#readme",
+  "dependencies": {
+    "@anthropic-ai/sandbox-runtime": "^0.0.48",
+    "@anthropic-ai/sdk": "^0.82.0",
+    "@commander-js/extra-typings": "^14.0.0",
+    "@growthbook/growthbook": "^1.6.5",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@opentelemetry/resources": "^2.6.1",
+    "@opentelemetry/sdk-logs": "^0.214.0",
+    "@types/node": "^25.5.0",
+    "@types/react": "^19.2.14",
+    "ajv": "^8.18.0",
+    "axios": "^1.14.0",
+    "bidi-js": "^1.0.3",
+    "chalk": "^5.6.2",
+    "chokidar": "^5.0.0",
+    "color-diff-napi": "^0.0.1",
+    "commander": "^14.0.3",
+    "diff": "^8.0.4",
+    "env-paths": "^4.0.0",
+    "execa": "^9.6.1",
+    "https-proxy-agent": "^9.0.0",
+    "ignore": "^7.0.5",
+    "ink": "^6.8.0",
+    "jsonc-parser": "^3.3.1",
+    "lodash-es": "^4.18.1",
+    "lru-cache": "^11.2.7",
+    "marked": "^17.0.5",
+    "p-map": "^7.0.4",
+    "picomatch": "^4.0.4",
+    "react": "^19.2.4",
+    "semver": "^7.7.4",
+    "supports-hyperlinks": "^4.4.0",
+    "tree-kill": "^1.2.2",
+    "typescript": "^6.0.2",
+    "usehooks-ts": "^3.1.1",
+    "ws": "^8.20.0",
+    "xss": "^1.0.15",
+    "zod": "^4.3.6"
+  }
+}
