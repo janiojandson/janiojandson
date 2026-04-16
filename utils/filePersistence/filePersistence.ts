@@ -34,19 +34,10 @@ import {
   OUTPUTS_SUBDIR,
   type PersistedFile,
   type TurnStartTime,
-} from './types.js'
+} from './types.ts' // <--- CORRIGIDO AQUI PARA .ts
 
 /**
  * Execute file persistence for modified files in the outputs directory.
- *
- * Assembles all config internally:
- * - Checks environment kind (CLAUDE_CODE_ENVIRONMENT_KIND)
- * - Retrieves session access token
- * - Requires CLAUDE_CODE_REMOTE_SESSION_ID for session ID
- *
- * @param turnStartTime - The timestamp when the turn started
- * @param signal - Optional abort signal for cancellation
- * @returns Event data, or null if not enabled or no files to persist
  */
 export async function runFilePersistence(
   turnStartTime: TurnStartTime,
@@ -144,8 +135,7 @@ export async function runFilePersistence(
 }
 
 /**
- * Execute BYOC mode persistence: scan local filesystem for modified files,
- * then upload to Files API.
+ * Execute BYOC mode persistence
  */
 async function executeBYOCPersistence(
   turnStartTime: TurnStartTime,
@@ -153,8 +143,6 @@ async function executeBYOCPersistence(
   outputsDir: string,
   signal?: AbortSignal,
 ): Promise<FilesPersistedEventData> {
-  // Find modified files via local filesystem scan
-  // Uses same directory structure as downloads: {cwd}/{sessionId}/outputs
   const modifiedFiles = await findModifiedFiles(turnStartTime, outputsDir)
 
   if (modifiedFiles.length === 0) {
@@ -168,7 +156,6 @@ async function executeBYOCPersistence(
     return { files: [], failed: [] }
   }
 
-  // Enforce file count limit
   if (modifiedFiles.length > FILE_COUNT_LIMIT) {
     logDebug(
       `File count limit exceeded: ${modifiedFiles.length} > ${FILE_COUNT_LIMIT}`,
@@ -194,7 +181,6 @@ async function executeBYOCPersistence(
       relativePath: relative(outputsDir, filePath),
     }))
     .filter(({ relativePath }) => {
-      // Security: skip files that resolve outside the outputs directory
       if (relativePath.startsWith('..')) {
         logDebug(`Skipping file outside outputs directory: ${relativePath}`)
         return false
@@ -204,14 +190,12 @@ async function executeBYOCPersistence(
 
   logDebug(`BYOC mode: uploading ${filesToProcess.length} files`)
 
-  // Upload files in parallel
   const results = await uploadSessionFiles(
     filesToProcess,
     config,
     DEFAULT_UPLOAD_CONCURRENCY,
   )
 
-  // Separate successful and failed uploads
   const persistedFiles: PersistedFile[] = []
   const failedFiles: FailedPersistence[] = []
 
@@ -239,20 +223,11 @@ async function executeBYOCPersistence(
   }
 }
 
-/**
- * Execute Cloud (1P) mode persistence.
- * TODO: Read file_id from xattr on output files. xattr-based file IDs are
- * currently being added for 1P environments.
- */
 function executeCloudPersistence(): FilesPersistedEventData {
   logDebug('Cloud mode: xattr-based file ID reading not yet implemented')
   return { files: [], failed: [] }
 }
 
-/**
- * Execute file persistence and emit result via callback.
- * Handles errors internally.
- */
 export async function executeFilePersistence(
   turnStartTime: TurnStartTime,
   signal: AbortSignal,
@@ -268,13 +243,6 @@ export async function executeFilePersistence(
   }
 }
 
-/**
- * Check if file persistence is enabled.
- * Requires: feature flag ON, valid environment kind, session access token,
- * and CLAUDE_CODE_REMOTE_SESSION_ID.
- * This ensures only public-api/sessions users trigger file persistence,
- * not normal Claude Code CLI users.
- */
 export function isFilePersistenceEnabled(): boolean {
   if (feature('FILE_PERSISTENCE')) {
     return (
