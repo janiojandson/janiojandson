@@ -1,321 +1,100 @@
-# Claude Code CLI
-Claude Code’s source code appears to have leaked because an early npm release was shipped with source-map data still attached. A developer inspecting the bundled cli.mjs file noticed --enable-source-maps and then found a huge sourceMappingURL block at the bottom, which suggested the package still contained enough mapping data to reconstruct the original source. Anthropic later removed the source map from newer updates, but by then the earlier package had already been downloaded and inspected, so the code could still be recovered from what was already published.
+<div align="center">
 
+# 👋 Olá, eu sou Janio Jandson
 
+### 🇧🇷 Militar da Marinha | Desenvolvedor | Empreendedor Digital
 
-## Overview
+---
 
-Claude Code CLI is a sophisticated terminal application that provides an interactive interface for developers to collaborate with Claude (Anthropic's AI assistant) directly from their terminal. It combines the power of large language models with comprehensive file system operations, tool calling, and extensible architecture.
+<img src="https://komarev.com/ghpvc/?username=janiojandson&color=0e75b6&style=flat-square&label=VISITAS" alt="Profile views" />
 
-## Features
+</div>
 
-### Core Capabilities
+---
 
-- **Interactive AI Chat** - Natural language coding assistance with real-time streaming responses
-- **File Operations** - Read, edit, write, search, and analyze files with AI assistance
-- **Bash Execution** - Execute shell commands with safety controls and sandboxing
-- **Web Integration** - Search and fetch web content directly from the CLI
-- **Agent Swarms** - Spawn sub-agents for parallel task execution
-- **Task Management** - Track and manage background tasks and operations
+### 🧭 Sobre Mim
 
-### Advanced Features
+Sou **Militar da Marinha do Brasil**, com uma paixão inabalável por **tecnologia, automação e negócios digitais**. Acredito que a intersecção entre disciplina militar e inovação tecnológica é onde as coisas realmente acontecem.
 
-- **Multiple Execution Modes**
-  - Interactive REPL mode for conversational coding
-  - Headless mode (`-p/--print`) for scripting and CI/CD pipelines
-  - Remote session support via SSH and direct connections
+Atualmente, estou focado em construir soluções que gerem **renda recorrente e escalável**, combinando:
 
-- **MCP (Model Context Protocol)**
-  - Connect to external tool servers
-  - Dynamic tool discovery and execution
-  - Enterprise-grade security with allowlist/denylist policies
+- 🤖 **Automação & IA** — Bots, agentes autónomos e integrações inteligentes
+- 📈 **Trading & Mercado Financeiro** — Robôs para Forex, B3 e análise quantitativa
+- 🛒 **E-commerce** — Dropshipping, Shopee, Mercado Livre
+- 🎯 **Tráfego & Redes Sociais** — TikTok, Instagram, micro-SaaS
 
-- **Context Management**
-  - Automatic context compaction for long conversations
-  - Session persistence and resume capability
-  - Project-specific memory and context
+> 💡 *"Disciplina é a ponte entre objectivos e conquistas."* — Jim Rohn
 
-- **Developer Tools**
-  - Git integration (commit, diff, branch management)
-  - LSP (Language Server Protocol) support
-  - Voice mode for speech-to-text input
-  - Chrome/IDE integration
+---
 
-## Installation
+### 🛠️ Stack & Ferramentas
 
-### Prerequisites
+<div align="center">
 
-- [Bun](https://bun.sh) runtime (latest stable version recommended)
-- Git (for repository operations)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Railway](https://img.shields.io/badge/Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
+![MetaTrader](https://img.shields.io/badge/MetaTrader-0066CC?style=flat-square&logo=metatrader&logoColor=white)
 
-### Install Options
+</div>
 
-```bash
-# Install globally via npm
-npm install -g @anthropic-ai/claude-code
+---
 
-# Or install via Bun
-bun install -g @anthropic-ai/claude-code
+### 🚀 Projectos em Destaque
 
-# Or use the native installer (macOS/Linux)
-curl -fsSL https://claude.ai/install.sh | sh
-```
+| Projecto | Descrição | Stack |
+|----------|-----------|-------|
+| 🤖 [**bot-captura-ideias**](https://github.com/janiojandson/bot-captura-ideias) | Bot inteligente para captura e organização de ideias com IA | Node.js, Telegram, PostgreSQL |
+| 📊 [**sentiment-saas**](https://github.com/janiojandson/sentiment-saas) | Micro-SaaS de análise de sentimentos em redes sociais | Python, NLP, API REST |
+| 🗂️ [**nexus-arsenal-agentes**](https://github.com/janiojandson/nexus-arsenal-agentes) | Arsenal de agentes autónomos para automação | Node.js, IA, Multi-agent |
+| 🧪 [**nexus-teste-fisico**](https://github.com/janiojandson/nexus-teste-fisico) | Motor físico para simulações e testes | TypeScript, Física computacional |
+| 🌐 [**UebaMix**](https://github.com/janiojandson/UebaMix) | Plataforma de certificados digitais | Web, Certificações |
 
-### Post-Installation Setup
+---
 
-```bash
-# Run the setup wizard
-claude
+### 📊 Estatísticas GitHub
 
-# Or initialize with a specific directory
-claude /path/to/your/project
+<div align="center">
 
-# Authenticate with your Anthropic account
-claude login
-```
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=janiojandson&show_icons=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=58a6ff&icon_color=58a6ff&text_color=c9d1d9" alt="GitHub Stats" />
+<img height="170" src="https://github-readme-streak-stats.herokuapp.com?user=janiojandson&theme=radical&hide_border=true&background=0d1117&stroke=30363d&ring=58a6ff&fire=58a6ff&currLabel=58a6ff&sideLabels=c9d1d9&dates=c9d1d9" alt="GitHub Streak" />
 
-## Quick Start
+</div>
 
-```bash
-# Start interactive mode
-claude
-
-# Run in headless mode with a prompt
-claude -p "Explain this codebase"
-
-# Execute a command and exit
-claude -p "Fix the bug in src/utils.ts" --allowedTools BashTool,FileEditTool
-
-# Resume a previous session
-claude --resume
-```
-
-## Available Commands
-
-Type `/` in the REPL to see all available commands. Here are the key ones:
-
-### Core Commands
-| Command | Description |
-|---------|-------------|
-| `/help` | Show help and available commands |
-| `/exit` or `/quit` | Exit the REPL |
-| `/clear` or `/reset` | Clear conversation history |
-| `/compact` | Summarize conversation to save context |
-| `/init` | Initialize CLAUDE.md file with codebase documentation |
-
-### Development Commands
-| Command | Description |
-|---------|-------------|
-| `/commit` | Create a git commit |
-| `/review` | Review a pull request |
-| `/diff` | Show git diff interface |
-| `/branch` | Branch management |
-| `/doctor` | Run diagnostics and troubleshooting |
-
-### Configuration Commands
-| Command | Description |
-|---------|-------------|
-| `/config` or `/settings` | Open configuration panel |
-| `/theme` | Change terminal theme |
-| `/model` | Set the AI model |
-| `/mcp` | Manage MCP servers |
-| `/skills` | List available skills |
-
-### Context & Memory
-| Command | Description |
-|---------|-------------|
-| `/context` | Visualize current context usage |
-| `/memory` | Edit Claude memory files |
-| `/files` | List tracked files |
-| `/tasks` | List background tasks |
-
-### Session Management
-| Command | Description |
-|---------|-------------|
-| `/session` or `/remote` | Show remote session URL |
-| `/resume` | Resume previous session |
-| `/share` | Share session |
-| `/cost` | Show session cost and duration |
-
-## Built-in Tools
-
-Claude Code comes with 40+ built-in tools for file operations, execution, and integration:
-
-### File Operations
-- **FileReadTool** - Read files, images, PDFs with smart pagination
-- **FileEditTool** - Edit files with sed-like functionality
-- **FileWriteTool** - Create or overwrite files
-- **GlobTool** - Find files using glob patterns
-- **GrepTool** - Search file contents with regex
-- **NotebookEditTool** - Edit Jupyter notebooks
-
-### Execution
-- **BashTool** - Execute shell commands with sandboxing
-- **PowerShellTool** - Windows PowerShell execution
-
-### Web & Search
-- **WebFetchTool** - Fetch web pages content
-- **WebSearchTool** - Search the web
-
-### AI & Agents
-- **AgentTool** - Spawn sub-agents for parallel work
-- **TaskCreateTool/TaskStopTool/TaskListTool** - Background task management
-
-### MCP Integration
-- **MCPTool** - Execute tools from MCP servers
-- **ListMcpResourcesTool/ReadMcpResourceTool** - MCP resource management
-
-## Configuration
-
-### Global Configuration (~/.claude.json)
-
-```json
-{
-  "theme": "dark",
-  "autoCompactEnabled": true,
-  "editorMode": "vim",
-  "verbose": false,
-  "mcpServers": {
-    "my-server": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path"]
-    }
-  }
-}
-```
-
-### Project Configuration (.claude.json)
-
-```json
-{
-  "allowedTools": ["BashTool", "FileEditTool", "FileReadTool"],
-  "mcpServers": {
-    "project-server": {
-      "type": "sse",
-      "url": "https://api.example.com/mcp"
-    }
-  }
-}
-```
-
-### MCP Configuration (.mcp.json)
-
-```json
-{
-  "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "."]
-    },
-    "github": {
-      "type": "sse",
-      "url": "https://api.github.com/mcp",
-      "oauth": {
-        "clientId": "your-client-id"
-      }
-    }
-  }
-}
-```
-
-### Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| `CLAUDE_CODE_DEBUG` | Enable debug logging |
-| `CLAUDE_CONFIG_DIR` | Override config directory |
-| `DISABLE_AUTOUPDATER` | Disable auto-updater |
-| `CLAUDE_CODE_BUBBLEWRAP` | Enable sandbox mode |
-
-## Usage Examples
-
-### Code Review
-
-```bash
-# Review the current PR
-/review
-
-# Security-focused review
-/security-review
-
-# Deep bug-finding review
-/ultrareview
-```
-
-### File Operations
-
-```bash
-# Read a file with specific range
-Please read src/main.ts lines 50-100
-
-# Edit a file
-Please update the config in package.json to add a new script
-
-# Search across files
-Find all TODO comments in the codebase
-```
-
-### Git Operations
-
-```bash
-# Stage and commit changes
-/commit
-
-# Commit, push, and open PR
-/commit-push-pr
-
-# Show diff
-/diff
-```
-
-### Task Management
-
-```bash
-# Create a background task
-Please create a task to run the test suite in background
-
-# List tasks
-/tasks
-
-# Stop a task
-Please stop the test task
-```
-
-### MCP Server Usage
-
-```bash
-# Add an MCP server
-/mcp add filesystem npx -y @modelcontextprotocol/server-filesystem .
-
-# Use MCP tools
-Please use the filesystem server to list all TypeScript files
-```
-
-## Architecture
-
-### High-Level Flow
-
-```
-User Input → REPL.tsx → QueryEngine → Claude API → Tool Execution → Response
-```
-
-### Key Components
-
-- **main.tsx** - CLI entry point and argument parsing
-- **entrypoints/init.ts** - System initialization and configuration
-- **screens/REPL.tsx** - Interactive terminal UI
-- **QueryEngine.ts** - Message submission and query coordination
-- **services/tools/** - Tool execution engine with concurrency control
-- **services/mcp/** - MCP client and server management
-
-### Technology Stack
-
-| Component | Technology |
-|-----------|------------|
-| Runtime | Bun |
-| Language | TypeScript (TSX) |
-| UI Framework | React 18+ |
-| Terminal UI | Ink (custom fork) |
-| Schema Validation | Zod v4 |
-| CLI Parser | C
+---
+
+### 🎯 Objectivos 2025
+
+- [ ] 🏦 Gerar renda recorrente com trading algorítmico
+- [ ] 🛒 Escalar operação de e-commerce para 5+ figuras/mês
+- [ ] 🤖 Lançar micro-SaaS funcional com clientes pagantes
+- [ ] 📱 Crescer presença digital para 10K+ seguidores
+- [ ] 🧠 Dominar MQL5 e automação no MetaTrader 5
+
+---
+
+### 🤝 Vamos Conectar?
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-janiojandson-181717?style=flat-square&logo=github)](https://github.com/janiojandson)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Janio_Jandson-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/janiojandson)
+[![Telegram](https://img.shields.io/badge/Telegram-@JanioJandson-26A5E4?style=flat-square&logo=telegram)](https://t.me/JanioJandson)
+
+</div>
+
+---
+
+<div align="center">
+
+### ⚡ *"A disciplina é a alma do sucesso. A tecnologia é a ferramenta."*
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=80§ion=footer" alt="Footer" />
+
+</div>
